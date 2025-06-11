@@ -18,7 +18,20 @@ RUN apt update && \
        git \
        mc \
        build-essential \
-       nvidia-cuda-toolkit && \
+       nvidia-cuda-toolkit \
+       zlib1g-dev \
+       libssl-dev \
+       libffi-dev \
+       libsqlite3-dev \
+       libbz2-dev \
+       libreadline-dev \
+       libncurses5-dev \
+       libncursesw5-dev \
+       xz-utils \
+       tk-dev \
+       libgdbm-dev \
+       libnss3-dev \
+       liblzma-dev && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean -y
