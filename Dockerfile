@@ -1,6 +1,9 @@
 FROM nvidia/cuda:12.4.1-devel-ubuntu22.04
 
-ENV DEBIAN_FRONTEND=noninteractive
+ENV DEBIAN_FRONTEND=noninteractive \
+    PIP_PREFER_BINARY=1 \
+    PYTHONUNBUFFERED=1 \
+    PYTHON_VERSION=3.12.3
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
