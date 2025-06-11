@@ -21,27 +21,27 @@ RUN apt update && \
        nvidia-cuda-toolkit && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/* && \
-    apt-get clean -y \
+    apt-get clean -y
 
- # Компиляция Python 3.12
+# Компиляция Python 3.12
 RUN wget https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tar.xz && \
-     tar -xf Python-${PYTHON_VERSION}.tar.xz && \
-     cd Python-${PYTHON_VERSION} && \
-     ./configure --enable-optimizations && \
-     make -j$(nproc) && \
-     make install && \
-     cd .. && \
-     rm -rf Python-${PYTHON_VERSION} Python-${PYTHON_VERSION}.tar.xz
+    tar -xf Python-${PYTHON_VERSION}.tar.xz && \
+    cd Python-${PYTHON_VERSION} && \
+    ./configure --enable-optimizations && \
+    make -j$(nproc) && \
+    make install && \
+    cd .. && \
+    rm -rf Python-${PYTHON_VERSION} Python-${PYTHON_VERSION}.tar.xz
 
 RUN ln -fs /usr/local/bin/python3.12 /usr/local/bin/python && \
-     ln -fs /usr/local/bin/python3.12 /usr/local/bin/python3 && \
-     ln -fs /usr/local/bin/pip3.12 /usr/local/bin/pip
+    ln -fs /usr/local/bin/python3.12 /usr/local/bin/python3 && \
+    ln -fs /usr/local/bin/pip3.12 /usr/local/bin/pip
 
 RUN pip install --no-cache-dir \
-     torch==2.6.0 \
-     torchvision==0.21.0 \
-     torchaudio==2.6.0 \
-     --index-url https://download.pytorch.org/whl/cu124
+    torch==2.6.0 \
+    torchvision==0.21.0 \
+    torchaudio==2.6.0 \
+    --index-url https://download.pytorch.org/whl/cu124
 
 # Устанавливаем инструменты сборки
 RUN pip install wheel ninja setuptools
